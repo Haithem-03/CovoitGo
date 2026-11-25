@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /** Adapter generique : une carte (layout XML) par element de la liste. */
@@ -23,8 +24,16 @@ public class CarteAdapter<T> extends BaseAdapter {
     public CarteAdapter(Context context, int layout, List<T> elements, Remplisseur<T> remplisseur) {
         this.context = context;
         this.layout = layout;
-        this.elements = elements;
+        this.elements = elements != null ? elements : new ArrayList<>();
         this.remplisseur = remplisseur;
+    }
+
+    public void setElements(List<T> nouveauxElements) {
+        this.elements.clear();
+        if (nouveauxElements != null) {
+            this.elements.addAll(nouveauxElements);
+        }
+        notifyDataSetChanged();
     }
 
     @Override
