@@ -12,6 +12,8 @@ import java.util.List;
 /** UC : Gerer les trajets, Estimer le prix de la place, recherche de trajets. */
 public class TrajetController {
 
+    private static final String STATUT_ANNULE = "ANNULE";
+
     private final SessionManager session;
 
     public TrajetController(Context context) {
@@ -48,37 +50,33 @@ public class TrajetController {
             callback.onError("Proposez au moins une place");
             return;
         }
+
         Double prix = null;
         if (!prixTexte.isEmpty()) {
-            try {
-                prix = Double.parseDouble(prixTexte.replace(',', '.'));
-            } catch (NumberFormatException e) {
-                callback.onError("Prix invalide");
+            String erreurPrix = validerPrix(prixTexte, prixMax);
+            if (erreurPrix != null) {
+                callback.onError(erreurPrix);
                 return;
             }
-            if (prix <= 0) {
-                callback.onError("Le prix doit etre superieur a 0");
-                return;
-            }
-            if (prixMax != null && prix > prixMax) {
-                callback.onError("Le prix maximum pour ce trajet est de " + prixMax + " DT");
-                return;
-            }
+            prix = lirePrix(prixTexte);
         }
+
         if (jours != null && jours.isEmpty()) {
             callback.onError("Cochez au moins un jour pour un trajet recurrent");
             return;
         }
-        Requetes.NouveauTrajet req = new Requetes.NouveauTrajet(session.getUtilisateur().getIdUtilisateur(),
+
+        Requetes.NouveauTrajet req = new Requetes.NouveauTrajet(idUtilisateurCourant(),
                 depart, arrivee, date, heure, nbPlaces, prix, jours);
         RetrofitClient.getApi().publierTrajet(req).enqueue(new ApiCallback<>(callback));
     }
 
     /** @param date "aaaa-mm-jj" */
-    public void rechercher(String depart, String arrivee, String date, int places, ResultCallback<List<Trajet>> callback) {
+    public void rechercher(String depart, String arrivee, String date, int places,
+                           ResultCallback<List<Trajet>> callback) {
         RetrofitClient.getApi()
-                .rechercherTrajets(depart.isEmpty() ? null : depart, arrivee.isEmpty() ? null : arrivee,
-                        date, places, session.getUtilisateur().getIdUtilisateur())
+                .rechercherTrajets(nullSiVide(depart), nullSiVide(arrivee),
+                        date, places, idUtilisateurCourant())
                 .enqueue(new ApiCallback<>(callback));
     }
 
@@ -87,15 +85,46 @@ public class TrajetController {
     }
 
     public void chargerMesTrajets(ResultCallback<List<Trajet>> callback) {
-        RetrofitClient.getApi().getTrajetsConducteur(session.getUtilisateur().getIdUtilisateur())
+        RetrofitClient.getApi().getTrajetsConducteur(idUtilisateurCourant())
                 .enqueue(new ApiCallback<>(callback));
     }
 
     public void annuler(Trajet trajet, ResultCallback<Trajet> callback) {
-        if ("ANNULE".equals(trajet.getStatut())) {
+        if (STATUT_ANNULE.equals(trajet.getStatut())) {
             callback.onError("Ce trajet est deja annule");
             return;
         }
         RetrofitClient.getApi().annulerTrajet(trajet.getIdTrajet()).enqueue(new ApiCallback<>(callback));
+    }
+
+    // ---- Methodes utilitaires privees ----
+
+    private int idUtilisateurCourant() {
+        return session.getUtilisateur().getIdUtilisateur();
+    }
+
+    private static String nullSiVide(String texte) {
+        return texte.isEmpty() ? null : texte;
+    }
+
+    private static Double lirePrix(String prixTexte) {
+        return Double.parseDouble(prixTexte.replace(',', '.'));
+    }
+
+    /** Retourne le message d'erreur si le prix est invalide, sinon null. */
+    private static String validerPrix(String prixTexte, Double prixMax) {
+        double prix;
+        try {
+            prix = lirePrix(prixTexte);
+        } catch (NumberFormatException e) {
+            return "Prix invalide";
+        }
+        if (prix <= 0) {
+            return "Le prix doit etre superieur a 0";
+        }
+        if (prixMax != null && prix > prixMax) {
+            return "Le prix maximum pour ce trajet est de " + prixMax + " DT";
+        }
+        return null;
     }
 }
