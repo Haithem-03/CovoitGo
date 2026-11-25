@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CovoitGo"
+        android:usesCleartextTraffic="true">
+
+        <!-- Maquette 6 : connexion (ecran de demarrage) -->
+        <activity
+            android:name=".view.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.InscriptionActivity" android:windowSoftInputMode="adjustResize" />
+        <!-- Maquettes 1 a 5 -->
+        <activity android:name=".view.RechercheActivity" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".view.ResultatsActivity" />
+        <activity android:name=".view.DetailTrajetActivity" />
+        <activity android:name=".view.MesReservationsActivity" />
+        <activity android:name=".view.PublierTrajetActivity" android:windowSoftInputMode="adjustResize" />
+        <!-- Ecrans complementaires -->
+        <activity android:name=".view.ProfilActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.VehiculeActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.MesTrajetsActivity" />
+        <activity android:name=".view.DemandesActivity" />
+        <activity android:name=".view.AdminActivity" />
+    </application>
+</manifest>

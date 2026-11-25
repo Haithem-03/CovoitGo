@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Maquette 5 : publier un trajet -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Bouton retour -->
+            <ImageButton
+                android:id="@+id/btnRetour"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_rond_bordure"
+                android:contentDescription="Retour"
+                android:src="@drawable/ic_retour" />
+
+            <TextView style="@style/TitreEcran" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:paddingStart="4dp" android:text="Publier un trajet" />
+            <TextView style="@style/SousTitre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:paddingStart="4dp" android:text="Partagez vos frais avec d'autres étudiants." />
+
+            <!-- Affiche si l'etudiant n'est pas encore conducteur valide -->
+            <LinearLayout android:id="@+id/carteConducteur" style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                <TextView android:id="@+id/tvEtatConducteur" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="16sp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnVehicule" style="@style/BoutonContour" android:layout_width="match_parent" android:layout_marginTop="16dp" android:text="Enregistrer mon véhicule" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/formulaire" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+                <!-- Depart / arrivee / date / heure -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:background="@drawable/bg_carte" android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Départ" />
+                            <EditText android:id="@+id/etDepart" style="@style/Valeur" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Ezzahra" android:inputType="textCapWords" android:maxLines="1" />
+                        </LinearLayout>
+                        <ImageButton android:id="@+id/btnEchanger" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_rond_bordure" android:contentDescription="Inverser" android:src="@drawable/ic_echanger" />
+                    </LinearLayout>
+                    <View style="@style/Separateur" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Arrivée" />
+                        <EditText android:id="@+id/etArrivee" style="@style/Valeur" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" android:maxLines="1" android:text="Esprit · El Ghazala" />
+                    </LinearLayout>
+                    <View style="@style/Separateur" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <LinearLayout android:id="@+id/zoneDate" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="?attr/selectableItemBackground" android:orientation="vertical" android:padding="16dp">
+                            <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date" />
+                            <TextView android:id="@+id/tvDate" style="@style/Valeur" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <View android:layout_width="1dp" android:layout_height="match_parent" android:background="@color/gris_clair" />
+                        <LinearLayout android:id="@+id/zoneHeure" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="?attr/selectableItemBackground" android:orientation="vertical" android:padding="16dp">
+                            <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Heure de départ" />
+                            <TextView android:id="@+id/tvHeure" style="@style/Valeur" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Places -->
+                <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="14dp" android:paddingBottom="14dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Places proposées" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                    <ImageButton android:id="@+id/btnMoins" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_rond_bordure" android:contentDescription="Moins" android:src="@drawable/ic_moins" />
+                    <TextView android:id="@+id/tvNbPlaces" android:layout_width="44dp" android:layout_height="wrap_content" android:gravity="center" android:text="3" android:textColor="@color/texte" android:textSize="20sp" android:textStyle="bold" />
+                    <ImageButton android:id="@+id/btnPlus" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_rond_bordure" android:contentDescription="Plus" android:src="@drawable/ic_plus" />
+                </LinearLayout>
+
+                <!-- Prix -->
+                <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Prix par place" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                        <EditText android:id="@+id/etPrix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@null" android:gravity="end" android:hint="0,000" android:inputType="numberDecimal" android:minWidth="80dp" android:textColor="@color/texte" android:textSize="24sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:text="DT" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/tvConseil" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:background="@drawable/bg_info_rose" android:padding="12dp" android:text="Saisissez le départ et l'arrivée pour obtenir le prix conseillé." android:textColor="@color/rouge" android:textSize="14sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Recurrence -->
+                <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Trajet récurrent" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                        <CheckBox android:id="@+id/cbRecurrent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="@color/rouge" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/zoneJours" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" android:visibility="gone">
+                        <TextView android:id="@+id/jourL" android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="6dp" android:gravity="center" android:text="L" android:textSize="16sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/jourMA" android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="6dp" android:gravity="center" android:text="M" android:textSize="16sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/jourME" android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="6dp" android:gravity="center" android:text="M" android:textSize="16sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/jourJ" android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="6dp" android:gravity="center" android:text="J" android:textSize="16sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/jourV" android:layout_width="46dp" android:layout_height="46dp" android:layout_marginEnd="6dp" android:gravity="center" android:text="V" android:textSize="16sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/jourS" android:layout_width="46dp" android:layout_height="46dp" android:gravity="center" android:text="S" android:textSize="16sp" android:textStyle="bold" />
+                    </LinearLayout>
+                    <TextView android:id="@+id/tvAideRecurrence" style="@style/SousTitre" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Le trajet sera publié pour chaque jour coché, pendant 4 semaines." android:textSize="13sp" android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout android:id="@+id/barreBas" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_barre_bas" android:orientation="vertical" android:padding="16dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPublier" style="@style/BoutonPrincipal" android:layout_width="match_parent" android:text="Publier le trajet" />
+    </LinearLayout>
+</LinearLayout>

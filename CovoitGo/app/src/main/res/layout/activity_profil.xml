@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onglet Profil (meme charte que les maquettes) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+
+            <TextView style="@style/TitreEcran" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_marginBottom="16dp" android:paddingStart="4dp" android:text="Profil" />
+
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                <TextView android:id="@+id/tvInitiales" android:layout_width="64dp" android:layout_height="64dp" android:background="@drawable/bg_avatar" android:gravity="center" android:textColor="@color/rouge" android:textSize="22sp" android:textStyle="bold" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:id="@+id/tvNom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="19sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte_doux" android:textSize="14sp" />
+                    <TextView android:id="@+id/tvNote" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:textColor="@color/texte_doux" android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView android:id="@+id/tvStatutConducteur" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:background="@drawable/bg_info_rose" android:padding="14dp" android:textColor="@color/rouge" android:textSize="14sp" android:textStyle="bold" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:background="@drawable/bg_carte" android:orientation="vertical" android:paddingTop="6dp" android:paddingBottom="6dp">
+                <TextView android:id="@+id/ligneVehicule" android:layout_width="match_parent" android:layout_height="56dp" android:background="?attr/selectableItemBackground" android:drawableEnd="@drawable/ic_chevron" android:gravity="center_vertical" android:paddingStart="20dp" android:paddingEnd="16dp" android:text="Mon véhicule" android:textColor="@color/texte" android:textSize="16sp" />
+                <View style="@style/Separateur" />
+                <TextView android:id="@+id/ligneMesTrajets" android:layout_width="match_parent" android:layout_height="56dp" android:background="?attr/selectableItemBackground" android:drawableEnd="@drawable/ic_chevron" android:gravity="center_vertical" android:paddingStart="20dp" android:paddingEnd="16dp" android:text="Mes trajets publiés" android:textColor="@color/texte" android:textSize="16sp" />
+                <View style="@style/Separateur" />
+                <TextView android:id="@+id/ligneDemandes" android:layout_width="match_parent" android:layout_height="56dp" android:background="?attr/selectableItemBackground" android:drawableEnd="@drawable/ic_chevron" android:gravity="center_vertical" android:paddingStart="20dp" android:paddingEnd="16dp" android:text="Demandes de réservation reçues" android:textColor="@color/texte" android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Mes informations" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nom" />
+                <EditText android:id="@+id/etNom" style="@style/ChampConnexion" android:inputType="textPersonName|textCapWords" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prénom" />
+                <EditText android:id="@+id/etPrenom" style="@style/ChampConnexion" android:inputType="textPersonName|textCapWords" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Téléphone" />
+                <EditText android:id="@+id/etTelephone" style="@style/ChampConnexion" android:inputType="phone" android:maxLength="8" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nouveau mot de passe" />
+                <EditText android:id="@+id/etMotDePasse" style="@style/ChampConnexion" android:hint="Laisser vide pour le garder" android:inputType="textPassword" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnEnregistrer" style="@style/BoutonPrincipal" android:layout_width="match_parent" android:text="Enregistrer" />
+                <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:visibility="gone" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnDeconnexion" style="@style/BoutonContour" android:layout_width="match_parent" android:layout_marginBottom="8dp" android:text="Se déconnecter" android:textColor="@color/rouge" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/barre_navigation" />
+</LinearLayout>

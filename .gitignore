@@ -1,0 +1,9 @@
+CovoitGo/.gradle/
+CovoitGo/build/
+CovoitGo/app/build/
+CovoitGo/local.properties
+CovoitGo/.idea/
+CovoitGo-Backend/target/
+CovoitGo-Backend/.idea/
+*.iml
+*.apk

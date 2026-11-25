@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+
+            <ImageButton android:id="@+id/btnRetour" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_rond_bordure" android:contentDescription="Retour" android:src="@drawable/ic_retour" />
+
+            <TextView style="@style/TitreEcran" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:paddingStart="4dp" android:text="Mon véhicule" />
+
+            <TextView android:id="@+id/tvStatut" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_info_rose" android:padding="14dp" android:textColor="@color/rouge" android:textSize="14sp" android:textStyle="bold" />
+
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Véhicules enregistrés" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvMesVehicules" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="12dp" android:textColor="@color/texte" android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Ajouter un véhicule" android:textColor="@color/texte" android:textSize="17sp" android:textStyle="bold" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Marque" />
+                <EditText android:id="@+id/etMarque" style="@style/ChampConnexion" android:hint="Peugeot" android:inputType="textCapWords" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modèle" />
+                <EditText android:id="@+id/etModele" style="@style/ChampConnexion" android:hint="208" android:inputType="textCapWords" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Immatriculation" />
+                <EditText android:id="@+id/etImmatriculation" style="@style/ChampConnexion" android:hint="215 TU 4521" android:inputType="textCapCharacters" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Couleur" />
+                <EditText android:id="@+id/etCouleur" style="@style/ChampConnexion" android:hint="grise" android:inputType="text" />
+                <TextView style="@style/Etiquette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Places passagers" />
+                <EditText android:id="@+id/etNbPlaces" style="@style/ChampConnexion" android:hint="1 à 8" android:inputType="number" android:maxLength="1" />
+                <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_barre_bas" android:orientation="vertical" android:padding="16dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnEnregistrer" style="@style/BoutonPrincipal" android:layout_width="match_parent" android:text="Enregistrer le véhicule" />
+    </LinearLayout>
+</LinearLayout>

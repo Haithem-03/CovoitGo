@@ -1,0 +1,109 @@
+<resources>
+    <style name="Base.Theme.CovoitGo" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/rouge</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/rouge</item>
+        <item name="colorAccent">@color/rouge</item>
+        <item name="android:colorBackground">@color/fond</item>
+        <item name="android:windowBackground">@color/fond</item>
+        <item name="android:statusBarColor">@color/fond</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorPrimary">@color/texte</item>
+        <item name="android:textColorHint">#9AA0A6</item>
+    </style>
+
+    <style name="Theme.CovoitGo" parent="Base.Theme.CovoitGo" />
+
+    <!-- Textes -->
+    <style name="TitreEcran">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texte</item>
+    </style>
+
+    <style name="SousTitre">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/texte_doux</item>
+    </style>
+
+    <style name="Etiquette">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texte_doux</item>
+    </style>
+
+    <style name="Valeur">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/texte</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <!-- Cartes -->
+    <style name="Carte">
+        <item name="android:background">@drawable/bg_carte</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Boutons -->
+    <style name="BoutonPrincipal" parent="Widget.Material3.Button">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/rouge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">30dp</item>
+    </style>
+
+    <style name="BoutonContour" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_height">52dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textColor">@color/texte</item>
+        <item name="strokeColor">@color/bordure</item>
+        <item name="cornerRadius">26dp</item>
+    </style>
+
+    <style name="BoutonNoir" parent="Widget.Material3.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/texte</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">26dp</item>
+    </style>
+
+    <style name="Lien">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/rouge</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="Separateur">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gris_clair</item>
+    </style>
+
+    <!-- Champs du formulaire de connexion / inscription -->
+    <style name="ChampConnexion">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">@drawable/bg_champ</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/texte</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+</resources>

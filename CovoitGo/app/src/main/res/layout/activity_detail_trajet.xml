@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Maquette 3 : detail d'un trajet -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fond"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <ImageButton
+                android:id="@+id/btnRetour"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_rond_bordure"
+                android:contentDescription="Retour"
+                android:src="@drawable/ic_retour" />
+
+            <TextView
+                android:id="@+id/tvJour"
+                style="@style/TitreEcran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:paddingStart="4dp"
+                android:textSize="26sp" />
+
+            <!-- Itineraire -->
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:id="@+id/tvHeureDepart" android:layout_width="60dp" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="18sp" android:textStyle="bold" />
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_marginTop="4dp" android:contentDescription="Départ" android:src="@drawable/ic_cercle" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/tvVilleDepart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="18sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvPrecisionDepart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte_doux" android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View android:layout_width="2dp" android:layout_height="22dp" android:layout_marginStart="67dp" android:layout_marginTop="4dp" android:layout_marginBottom="4dp" android:background="@color/texte" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:id="@+id/tvHeureArrivee" android:layout_width="60dp" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="18sp" android:textStyle="bold" />
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_marginTop="4dp" android:contentDescription="Arrivée" android:src="@drawable/ic_point" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/tvVilleArrivee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="18sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvPrecisionArrivee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte_doux" android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Prix -->
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prix par place" android:textColor="@color/texte" android:textSize="16sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="À régler en espèces au conducteur" android:textColor="@color/texte_doux" android:textSize="13sp" />
+                </LinearLayout>
+                <TextView android:id="@+id/tvPrix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="24sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Conducteur -->
+            <LinearLayout style="@style/Carte" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                    <TextView android:id="@+id/tvInitiales" android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_avatar" android:gravity="center" android:textColor="@color/rouge" android:textSize="18sp" android:textStyle="bold" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="14dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/tvConducteur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte" android:textSize="18sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvNote" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/texte_doux" android:textSize="14sp" />
+                    </LinearLayout>
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="Voir" android:src="@drawable/ic_chevron" />
+                </LinearLayout>
+                <View style="@style/Separateur" android:layout_marginTop="16dp" android:layout_marginBottom="12dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:contentDescription="Vérifié" android:src="@drawable/ic_bouclier" />
+                    <TextView android:id="@+id/tvVerifie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:textColor="@color/texte" android:textSize="15sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:contentDescription="Véhicule" android:src="@drawable/ic_voiture" />
+                    <TextView android:id="@+id/tvVehicule" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:textColor="@color/texte" android:textSize="15sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <ImageView android:layout_width="22dp" android:layout_height="22dp" android:contentDescription="Places" android:src="@drawable/ic_profil" />
+                    <TextView android:id="@+id/tvPlacesRestantes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:textColor="@color/texte" android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/SousTitre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="4dp"
+                android:text="Le numéro de téléphone du conducteur s'affiche une fois votre demande acceptée."
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvSignaler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Signaler ce trajet"
+                android:textColor="@color/texte_doux"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_barre_bas"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDemander"
+            style="@style/BoutonPrincipal"
+            android:layout_width="match_parent"
+            android:text="Demander une place" />
+    </LinearLayout>
+</LinearLayout>
